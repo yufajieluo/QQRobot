@@ -1,2 +1,2 @@
 # QQRobot
-QQRobot get qzone albums photo
+QQRobot get qzone albums photos
