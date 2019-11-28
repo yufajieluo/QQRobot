@@ -19,9 +19,8 @@ FORMAT = '[%(asctime)s]  [%(process)d] [%(thread)d] [%(filename)16s:%(lineno)4d]
 logging.basicConfig(format=FORMAT, level=logging.DEBUG)
 
 class QRobot(object):
-    def __init__(self, login_user, login_pass, target_user, target_path, cookie, logger):
+    def __init__(self, login_user, target_user, target_path, cookie, logger):
         self.login_user = login_user
-        self.login_pass = login_pass
         self.target_user = target_user
         self.target_path = target_path
         self.cookie = cookie
@@ -143,7 +142,6 @@ import argparse
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("--login_user", help="login user QQ number", type=str, required=True)
-    parser.add_argument("--login_pass", help="login user QQ password", type=str, required=True)
     parser.add_argument("--target_user", help="target user QQ number", type=str, required=True)
     parser.add_argument("--target_path", help="target path save images", type=str, required=True)
     parser.add_argument("--cookie", help="cookie", type=str, required=True)
@@ -152,7 +150,7 @@ if __name__ == '__main__':
     if not args.target_path:
         args.target_path = './target'
 
-    qrbot = QRobot(args.login_user, args.login_pass, args.target_user, args.target_path, args.cookie, logging)
+    qrbot = QRobot(args.login_user, args.target_user, args.target_path, args.cookie, logging)
     qrbot.get_params()
     qrbot.get_album()
     qrbot.get_photo()
